@@ -1,0 +1,15 @@
+counter {
+  font-size: 2em;
+  text-align: center;
+  margin: 20px 0;
+}
+menu {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+button {
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+}
