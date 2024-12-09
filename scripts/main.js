@@ -15,9 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let isPaused = false; 
 
   pauseButton.addEventListener("click", () => {
-      isPaused = !isPaused; 
-      pauseButton.innerText = isPaused ? "Resume" : "Pause"; 
-  });
+    isPaused = !isPaused;
+
+    const icon = pauseButton.querySelector(".material-icons");
+    icon.innerText = isPaused ? "play_arrow" : "pause";
+
+    pauseButton.classList.toggle("active", !isPaused); 
+});
 
   // Create the interval to update the counter every second
   setInterval(() => {

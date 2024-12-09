@@ -1,15 +1,65 @@
-counter {
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%; /* Garante que preenche toda a largura */
+  height: 100%; /* Garante que preenche toda a altura */
+  box-sizing: border-box; /* Para manter consistência no layout */
+}
+
+#watch {
+  display: flex;
+  flex-direction: column; /* Coloca o relógio e os botões em uma coluna */
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  height: 100vh; /* Preenche toda a altura da tela */
+  background-color: #000000; /* Fundo claro para visual mais limpo */
+}
+
+#counter {
   font-size: 2em;
   text-align: center;
   margin: 20px 0;
+  color: white;
 }
-menu {
+
+#menu {
+  display: flex; /* Alinha os botões horizontalmente */
+  justify-content: center; /* Centraliza os botões */
+  align-items: center; /* Alinha verticalmente */
+  gap: 15px; /* Espaçamento entre os botões */
+}
+
+#menu button {
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
   display: flex;
   justify-content: center;
-  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 50%; 
+  width: 40px; 
+  height: 40px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-button {
-  padding: 10px 20px;
-  font-size: 1em;
-  cursor: pointer;
+
+.material-icons {
+  font-size: 20px; 
+  color: white;
+}
+
+#pauseButton.active {
+  background-color: #a0a0a098; 
+  color: white; 
+}
+
+#pauseButton {
+  background-color: #a0a0a098; 
+  color: white; 
+}
+
+#resetButton {
+  background-color: #e0e0e0; 
+  color: white; 
 }

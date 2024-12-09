@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Watch</title>
 </head>
 <body>
-    <div id="counter">0</div>
-    <section id="menu">
-        <button id="resetButton">Reset</button> 
-        <button id="pauseButton">Pause</button>
-    </section>
+    <div id="watch">
+        <div id="counter">00:00</div>
+        <section id="menu">
+            <button id="pauseButton" aria-label="Pause">
+                <span class="material-icons">pause</span>
+            </button>
+            <button id="resetButton" aria-label="Reset">
+                <span class="material-icons">refresh</span>
+            </button>
+        </section>
+    </div>
     <script src="scripts/main.js"></script>
 </body>
 </html>
