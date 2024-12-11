@@ -1,18 +1,18 @@
 html, body {
   margin: 0;
   padding: 0;
-  width: 100%; /* Garante que preenche toda a largura */
-  height: 100%; /* Garante que preenche toda a altura */
-  box-sizing: border-box; /* Para manter consistência no layout */
+  width: 100%; /* Ensures full width coverage */
+  height: 100%; /* Ensures full height coverage */
+  box-sizing: border-box; /* Maintains layout consistency */
 }
 
 #watch {
   display: flex;
-  flex-direction: column; /* Coloca o relógio e os botões em uma coluna */
-  justify-content: center; /* Centraliza verticalmente */
-  align-items: center; /* Centraliza horizontalmente */
-  height: 100vh; /* Preenche toda a altura da tela */
-  background-color: #000000; /* Fundo claro para visual mais limpo */
+  flex-direction: column; /* Arranges clock and buttons in a column */
+  justify-content: center; /* Vertically centers the content */
+  align-items: center; /* Horizontally centers the content */
+  height: 100vh; /* Fills the viewport height */
+  background-color: #000000; /* Dark background for a cleaner look */
 }
 
 #counter {
@@ -23,10 +23,11 @@ html, body {
 }
 
 #menu {
-  display: flex; /* Alinha os botões horizontalmente */
-  justify-content: center; /* Centraliza os botões */
-  align-items: center; /* Alinha verticalmente */
-  gap: 15px; /* Espaçamento entre os botões */
+  display: flex; /* Aligns buttons horizontally */
+  justify-content: center; /* Centers the buttons */
+  align-items: center; /* Vertically aligns buttons */
+  gap: 10px; /* Spacing between buttons */
+  padding-top: 10px;
 }
 
 #menu button {
@@ -38,10 +39,10 @@ html, body {
   justify-content: center;
   align-items: center;
   padding: 10px;
-  border-radius: 50%; 
+  border-radius: 50%; /* Circular buttons */
   width: 40px; 
   height: 40px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
 }
 
 .material-icons {
@@ -62,4 +63,40 @@ html, body {
 #resetButton {
   background-color: #e0e0e0; 
   color: white; 
+}
+
+#progress-container {
+  position: relative; /* Sets container as reference for absolute positioning */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px; /* Circle width */
+  height: 200px; /* Circle height */
+}
+
+#progress-ring {
+  transform: rotate(-90deg); /* Starts the progress bar at the top */
+}
+
+#time-display {
+  position: absolute; /* Centers content inside the container */
+  top: 50%; /* Vertically centers */
+  left: 50%; /* Horizontally centers */
+  transform: translate(-50%, -50%); /* Adjusts to the exact center */
+  display: flex;
+  align-items: baseline; /* Aligns minutes and seconds */
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+#time-display .minutes {
+  font-size: 3rem; /* Adjusted size to fit the circle */
+  font-weight: bold; /* Highlights the minutes */
+}
+
+#time-display .seconds {
+  font-size: 1.25rem; /* Smaller size for seconds */
+  margin-left: 2px; /* Spacing between minutes and seconds */
+  color: #a0a0a098;
 }

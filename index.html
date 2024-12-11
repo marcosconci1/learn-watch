@@ -9,7 +9,34 @@
 </head>
 <body>
     <div id="watch">
-        <div id="counter">00:00</div>
+        <div id="progress-container">
+            <svg id="progress-ring" width="200" height="200" viewBox="0 0 100 100">
+                <circle
+                    cx="50"
+                    cy="50"
+                    r="45"
+                    fill="none"
+                    stroke="#111"
+                    stroke-width="10"
+                ></circle>
+        
+                <!-- Progress bar -->
+                <circle
+                    cx="50"
+                    cy="50"
+                    r="45"
+                    fill="none"
+                    stroke="#007BFF"
+                    stroke-width="10"
+                    stroke-linecap="round"
+                    stroke-dasharray="282.6" 
+                    stroke-dashoffset="282.6" 
+                ></circle>
+            </svg>
+            <div id="time-display">
+                <span class="minutes">00</span><span class="seconds">00</span>
+            </div>
+        </div>
         <section id="menu">
             <button id="pauseButton" aria-label="Pause">
                 <span class="material-icons">pause</span>
