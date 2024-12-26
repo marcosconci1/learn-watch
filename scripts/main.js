@@ -2,14 +2,14 @@ const DEBUG = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   if (DEBUG) console.log("Script initialized!"); // Check if the script is loading correctly
-
+  
   const minutesElement = document.querySelector("#time-display .minutes");
   const secondsElement = document.querySelector("#time-display .seconds");
   const progressCircle = document.querySelector("#progress-ring circle:last-child");
 
   const totalTime = 3600; // Duration of one cycle (in seconds)
-  let count = 0; // Total seconds counter
-  let isPaused = false; // Initially paused
+  count = parseInt(localStorage.getItem("count")) || 0;
+  isPaused = localStorage.getItem("isPaused") === "true" ? true : false;
   const radius = 45;
   const circumference = 2 * Math.PI * radius; // Circle circumference
 
@@ -81,7 +81,12 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(updateTimer); 
   }
 
-  updateTimer(); // 
+  updateTimer();
+
+  window.addEventListener("beforeunload", () => {
+    localStorage.setItem("count", count);
+    localStorage.setItem("isPaused", isPaused);
+  });
 
 
   // Function to update progress bar color based on minutes passed
