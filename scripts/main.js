@@ -36,14 +36,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetButton = document.getElementById("resetButton");
   resetButton.addEventListener("click", () => {
     count = 0; // Reset total counter
-    isPaused = false; // Do not pause the counter
+    
     progressCircle.style.strokeDashoffset = `${circumference}`; // Reset progress bar
     minutesElement.textContent = "00";
     secondsElement.textContent = "00";
     console.log("Counter reset!"); // Confirm reset
 
-    // Update Pause button icon to "play_arrow"
-    pauseButton.querySelector(".material-icons").innerText = "play_arrow";
+    isPaused = false; 
+    pauseButton.querySelector(".material-icons").innerText = "pause";
+
     // Reset progress bar color
     updateStrokeColor(0);
   });
@@ -72,8 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Progress bar updated:", offset); // Log bar offset
       
       // Darken progress bar every minute
-      const minutesPassed = Math.floor(count / 60);
-      updateStrokeColor(minutesPassed);
+      updateStrokeColor(minutes);
     }
   }, 1000);
 
