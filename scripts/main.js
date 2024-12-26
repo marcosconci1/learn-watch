@@ -52,32 +52,37 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Update counter and progress bar
-  setInterval(() => {
+  let lastTimestamp = Date.now(); // Marca inicial
+
+  function updateTimer() {
     if (!isPaused) {
-      count++; // Increment total counter
-      if (DEBUG) console.log("Counter updated:", count); // Log current counter value
+      const now = Date.now();
+      const elapsed = Math.floor((now - lastTimestamp) / 1000); 
 
-      // Calculate minutes and seconds
-      const minutes = Math.floor(count / 60);
-      const seconds = count % 60;
+      if (elapsed > 0) {
+        count += elapsed; 
+        lastTimestamp = now;
 
-      // Update DOM
-      minutesElement.textContent = String(minutes).padStart(2, "0");
-      secondsElement.textContent = String(seconds).padStart(2, "0");
+        
+        const minutes = Math.floor(count / 60);
+        const seconds = count % 60;
+        minutesElement.textContent = String(minutes).padStart(2, "0");
+        secondsElement.textContent = String(seconds).padStart(2, "0");
 
-      // Calculate progress within the current cycle
-      const cycleTime = count % totalTime; // Time within the current cycle
-      const progress = cycleTime / totalTime;
-      const offset = circumference - progress * circumference;
+        
+        const cycleTime = count % totalTime;
+        const progress = cycleTime / totalTime;
+        const offset = circumference - progress * circumference;
+        progressCircle.style.strokeDashoffset = offset;
 
-      // Update progress bar
-      progressCircle.style.strokeDashoffset = offset;
-      if (DEBUG) console.log("Progress bar updated:", offset); // Log bar offset
-      
-      // Darken progress bar every minute
-      updateStrokeColor(minutes);
+        updateStrokeColor(minutes);
+      }
     }
-  }, 1000);
+    requestAnimationFrame(updateTimer); 
+  }
+
+  updateTimer(); // 
+
 
   // Function to update progress bar color based on minutes passed
   function updateStrokeColor(minutes) {
