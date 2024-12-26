@@ -1,5 +1,7 @@
+const DEBUG = false;
+
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Script initialized!"); // Check if the script is loading correctly
+  if (DEBUG) console.log("Script initialized!"); // Check if the script is loading correctly
 
   const minutesElement = document.querySelector("#time-display .minutes");
   const secondsElement = document.querySelector("#time-display .seconds");
@@ -25,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const pauseButton = document.getElementById("pauseButton");
   pauseButton.addEventListener("click", () => {
     isPaused = !isPaused;
-    console.log("Pause state:", isPaused); // Verify pause state
+    if (DEBUG) console.log("Pause state:", isPaused); // Verify pause state
 
     // Update Pause/Play button icon
     const icon = pauseButton.querySelector(".material-icons");
@@ -40,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     progressCircle.style.strokeDashoffset = `${circumference}`; // Reset progress bar
     minutesElement.textContent = "00";
     secondsElement.textContent = "00";
-    console.log("Counter reset!"); // Confirm reset
+    if (DEBUG) console.log("Counter reset!"); // Confirm reset
 
     isPaused = false; 
     pauseButton.querySelector(".material-icons").innerText = "pause";
@@ -53,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(() => {
     if (!isPaused) {
       count++; // Increment total counter
-      console.log("Counter updated:", count); // Log current counter value
+      if (DEBUG) console.log("Counter updated:", count); // Log current counter value
 
       // Calculate minutes and seconds
       const minutes = Math.floor(count / 60);
@@ -70,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Update progress bar
       progressCircle.style.strokeDashoffset = offset;
-      console.log("Progress bar updated:", offset); // Log bar offset
+      if (DEBUG) console.log("Progress bar updated:", offset); // Log bar offset
       
       // Darken progress bar every minute
       updateStrokeColor(minutes);
@@ -85,6 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const grayHex = baseGray.toString(16).padStart(2, '0');
     const newColor = `#${grayHex}${grayHex}${grayHex}`;
     progressCircle.style.stroke = newColor;
-    console.log("Progress bar color updated:", newColor);
+    if (DEBUG) console.log("Progress bar color updated:", newColor);
   }
 });
